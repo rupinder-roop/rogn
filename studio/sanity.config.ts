@@ -9,6 +9,7 @@ export default defineConfig({
 
   projectId: 'ybgip3si',
   dataset: 'production',
+  apiVersion:'2024-02-27',
 
   plugins: [structureTool(), visionTool()],
 
