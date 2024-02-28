@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
 import rognLogo from'../assets/rognLogo.png'
@@ -7,7 +6,6 @@ import {
   ConnectWallet,
   useAddress,
   useConnectionStatus,
-  shortenIfAddress,
 } from "@thirdweb-dev/react";
 import { client } from "../lib/sanityClient";
 import toast, { Toaster } from "react-hot-toast";
@@ -18,8 +16,6 @@ const style = {
   button: `border border-[#282b2f] bg-[#2081e2] p-[0.8rem] text-xl font-semibold rounded-lg cursor-pointer text-black`,
   details: `text-lg text-center text=[#282b2f] font-semibold mt-4`,
 };
-
-// const walletConfig = metamaskWallet();
 
 export default function Home() {
   const address = useAddress();
