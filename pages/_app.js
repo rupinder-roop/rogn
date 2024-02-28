@@ -5,14 +5,12 @@ import {
   metamaskWallet,
   localWallet,
   coinbaseWallet,
-  walletConnect,
-  zerionWallet,
 } from "@thirdweb-dev/react";
 
-const supportedChainIds = [5];
-const connectors = {
-  injected: {},
-};
+// const supportedChainIds = [5];
+// const connectors = {
+//   injected: {},
+// };
 export default function App({ Component, pageProps }) {
   return (
     <ThirdwebProvider
