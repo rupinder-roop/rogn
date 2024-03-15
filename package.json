@@ -3,13 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node figlet.js && next dev",
+    "dev": "next dev",
+    "roop": "node figlet.js && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@3rdweb/hooks": "^1.9.2",
+    "@3rdweb/react": "^1.9.3",
     "@sanity/client": "^6.15.0",
     "@thirdweb-dev/react": "^4.4.9",
     "@thirdweb-dev/sdk": "^4.0.36",

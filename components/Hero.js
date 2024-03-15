@@ -40,14 +40,14 @@ const Hero = () => {
             <img
               className="rounded-t-lg h-full w-fit"
               src="https://i.seadn.io/s/raw/files/8e55a1e3891d317e3a747fba5f4cef81.jpg?auto=format&dpr=1&w=384"
-              alt=""
+              alt="raw"
             />
             </a>
             <div className={style.infoContainer}>
               <img
                 className="h-[2.25rem] rounded-full"
                 src="https://i.seadn.io/gcs/files/cf6dcf969e2947afc194ec19a8201df4.jpg?auto=format&dpr=1&w=256"
-                alt=""
+                alt="raw"
               />
               <div className={style.author}>
                 <a className={style.name} href="https://opensea.io/TOKYOLUV">
