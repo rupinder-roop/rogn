@@ -1,6 +1,6 @@
 import Header from "../components/Header";
 import Hero from "../components/Hero";
-import rognLogo from'../assets/rognLogo.png'
+import rognLogo from "../assets/rognLogo.png";
 import { useEffect } from "react";
 import {
   ConnectWallet,
