@@ -7,13 +7,12 @@ import rognLogo from "../assets/rognLogo.png";
 import {
   ConnectWallet,
 } from "@thirdweb-dev/react";
-import WalletDetails from "./WalletDetails";
 
 const style = {
-  wrapper: `bg-[#043d3f] w-screen px-[1.2rem] py-[0.8rem] flex`,
+  wrapper: `bg-[#1A1523] w-screen px-[1.2rem] py-[0.8rem] flex sticky top-0`,
   logoContainer: `flex items-center cursor-pointer`,
   logoText: ` ml-[0.8rem] text-white text-3xl `,
-  searchBar: `flex flex-1 mx-[0.8rem] w-max-[520px] items-center bg-[#061213] rounded-[0.8rem] hover:bg-[#325152]`,
+  searchBar: `flex flex-1 mx-[0.8rem] w-max-[520px] items-center bg-[#061213] rounded-[0.8rem] hover:bg-[#3d3252]`,
   searchIcon: `text-[#8a939b] mx-3 font-bold text-lg`,
   searchInput: `h-[2.6rem] w-full border-0 bg-transparent outline-0 ring-0 px-2 pl-0 text-[#e6e8eb] placeholder:text-[#8a939b]`,
   headerItems: ` flex items-center justify-end`,
@@ -46,7 +45,9 @@ const Header = () => {
         </Link>
         <div className={style.headerItem}> Stats </div>
         <div className={style.headerItem}> Resources </div>
+        <Link href="/create/roop">
         <div className={style.headerItem}> Create </div>
+        </Link>
         <div className={style.headerIcon}>
           <CgProfile />
         </div>

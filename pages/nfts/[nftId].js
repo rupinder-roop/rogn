@@ -27,7 +27,7 @@ const Nft = ({provider}) => {
 
     const sdk = new ThirdwebSDK(
         Sepolia,
-        "https://rinkeby.infura.io/v3/a464b9152d8c466c8a94a514fce8e837"
+        "https://sepolia.infura.io/v3/d52ef0a36cbf4e1fbdcca4b00cc4bc67"
       );
       const contract = await sdk.getContract("0xA5Eb0Ce0bFFCD1923F41FD036EaD74bda2CB7AfC");
     return contract.erc721.getAll();
@@ -51,7 +51,7 @@ const Nft = ({provider}) => {
 
     const sdk = new ThirdwebSDK(
       Sepolia,
-      'https://rinkeby.infura.io/v3/a464b9152d8c466c8a94a514fce8e837'
+      'https://sepolia.infura.io/v3/d52ef0a36cbf4e1fbdcca4b00cc4bc67'
     )
     
     const contract = await sdk.getContract("0xfd1f10f31759a9d0B63DcfD55f70b286140D1B77");

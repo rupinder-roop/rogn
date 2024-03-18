@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState, useMemo } from "react";
 import { ThirdwebSDK } from "@thirdweb-dev/sdk";
-// import { useContract, useNFTs } from "@thirdweb-dev/react";
+import { useAddress, useNFTs,useContract ,useActiveListings,useDirectListings } from "@thirdweb-dev/react";
 
 import { Sepolia } from "@thirdweb-dev/chains";
 import { client } from "../../lib/sanityClient";
@@ -36,9 +36,15 @@ const style = {
 //infura api sepolia
 //https://eth-sepolia.g.alchemy.com/v2/sIo7ED3fUpai0DRLR8_7lqcnGZSa4dH2
 
-const Collection = ({ provider }) => {
+const Collection = () => {
   const router = useRouter();
-  // const { provider } = ethers.providers.Web3Provider;
+  const { contract } = useContract(
+    "0xfd1f10f31759a9d0B63DcfD55f70b286140D1B77",
+    "marketplace-v3"
+  );
+  console.log(contract);
+  const {data : webnfts,isLoading}= useDirectListings(contract);
+  // console.log(webnfts)
   const { collectionId } = router.query;
   const [collection, setCollection] = useState({});
   const [nfts, setNfts] = useState([]);
@@ -49,7 +55,7 @@ const Collection = ({ provider }) => {
 
     const sdk = new ThirdwebSDK(
       Sepolia,
-      "https://rinkeby.infura.io/v3/a464b9152d8c466c8a94a514fce8e837"
+      "https://sepolia.infura.io/v3/d52ef0a36cbf4e1fbdcca4b00cc4bc67"
     );
     const contract = await sdk.getContract(collectionId);
     return contract.erc721.getAll();
@@ -70,7 +76,7 @@ const Collection = ({ provider }) => {
 
     const sdk = new ThirdwebSDK(
       Sepolia,
-      'https://rinkeby.infura.io/v3/a464b9152d8c466c8a94a514fce8e837'
+      'https://sepolia.infura.io/v3/d52ef0a36cbf4e1fbdcca4b00cc4bc67'
     )
     
     const contract = await sdk.getContract("0xfd1f10f31759a9d0B63DcfD55f70b286140D1B77");
@@ -223,7 +229,7 @@ const Collection = ({ provider }) => {
         </div>
       </div>
       <div className="flex flex-wrap ">
-          {nfts.map((nftItem, id) => (
+          {webnfts && nfts.map((nftItem, id) => (
             <NFTCard
               key={id}
               nftItem={nftItem}

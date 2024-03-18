@@ -2,14 +2,10 @@ import { useEffect, useState } from "react";
 import {
   useBuyDirectListing,
   useContract,
-  ThirdwebProvider,
-  Web3Button,
+  useAddress,
+  buyoutListing,
 } from "@thirdweb-dev/react";
-import { EmbeddedWallet } from "@thirdweb-dev/wallets";
-import { Sepolia } from "@thirdweb-dev/chains";
-import { useWeb3 } from "@thirdweb-dev";
-
-import { ThirdwebSDK } from "@thirdweb-dev/sdk";
+import { BigNumber } from "@ethersproject/bignumber";
 
 import { HiTag } from "react-icons/hi";
 import { IoMdWallet } from "react-icons/io";
@@ -22,24 +18,12 @@ const style = {
 };
 
 const MakeOffer = ({ isListed, selectedNft, listings, marketPlaceModule }) => {
-  const { address, connectWallet } = useWeb3();
+  const address = useAddress();
+  const [purchased, setPurchased] = useState(false);
   const [selectedMarketNft, setSelectedMarketNft] = useState();
   const [enableButton, setEnableButton] = useState(false);
 
-  useEffect(() => {
-    if (account) {
-      setConnectedAccount(account);
-    }
-  }, [account]);
   // console.log(selectedNft,listings)
-  const sdk = new ThirdwebSDK(
-    Sepolia,
-    "https://rinkeby.infura.io/v3/a464b9152d8c466c8a94a514fce8e837"
-  );
-  const embeddedWallet = new EmbeddedWallet({
-    clientId: "27b2951bace39a4489643398630600f8",
-    chain: Sepolia, //  chain to connect to
-  });
 
   const { contract } = useContract(
     "0xfd1f10f31759a9d0B63DcfD55f70b286140D1B77",
@@ -58,13 +42,14 @@ const MakeOffer = ({ isListed, selectedNft, listings, marketPlaceModule }) => {
 
       setSelectedMarketNft(
         listings.find(
-          (marketNft) => marketNft.asset?.id === selectedNft.metadata.id
+          (marketNft) => marketNft.asset?.id === selectedNft.metadata?.id
         )
       );
     })();
   }, [selectedNft, listings, isListed]);
 
   useEffect(() => {
+    console.log(selectedMarketNft, "----selected,,,,, ", selectedNft?.owner);
     if (!selectedMarketNft || !selectedNft) return;
 
     setEnableButton(true);
@@ -80,27 +65,28 @@ const MakeOffer = ({ isListed, selectedNft, listings, marketPlaceModule }) => {
 
   const buyItem = async (
     listingId = selectedMarketNft.id,
-    quantityDesired = 1,
-    module = marketPlaceModule
+    quantityDesired = 1
   ) => {
-    console.log(listingId, quantityDesired, await module, "david");
+    console.log(listingId, quantityDesired, address);
+    const id = BigNumber.from(listingId);
     await buyDirectListing({
-      listingId: listingId,
-      quantityDesired: quantityDesired,
-      buyer: await embeddedWallet.getAddress(),
+      listingId: id,
+      quantity: 1,
+      buyer: address,
     })
+      .then(() => {
+        setPurchased(true);
+      })
       .then(() => {
         confirmPurchase();
       })
-      .catch((error) => console.error(error));
-
-    confirmPurchase();
+      .catch((error) => console.error(error), alert(error));
   };
 
   return (
     <div className="flex h-20 w-full items-center rounded-lg border border-[#151c22] bg-[#303339] px-12">
       <Toaster position="bottom-left" reverseOrder={false} />
-      {isListed === "true" ? (
+      {isListed === "true"? (
         <>
           <div
             onClick={() => {
@@ -122,18 +108,10 @@ const MakeOffer = ({ isListed, selectedNft, listings, marketPlaceModule }) => {
         <div className={`${style.button} bg-[#2081e2] hover:bg-[#42a0ff]`}>
           <IoMdWallet className={style.buttonIcon} />
           <div className={style.buttonText}>List Item</div>
-          {/* <Web3Button
-          contractAddress={contract}
-          action={()=>buyDirectListing({
-            listingId:selectedMarketNft.id,
-            quantity:1,
-          })}
-          >
-            BUY
-          </Web3Button>
-           */}
         </div>
       )}
+
+      
     </div>
   );
 };
