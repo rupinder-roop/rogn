@@ -23,11 +23,7 @@ export default function Home() {
 
   const welcomeUser = (userName, toastHandler = toast) => {
     toastHandler.success(
-      `Welcome back ${
-        userName !== "Unnamed"
-          ? ` ${userName}`
-          : ``
-      } !!`,
+      `Welcome back ${userName !== "Unnamed" ? ` ${userName}` : ``} !!`,
       {
         style: {
           background: "#04111d",
@@ -43,7 +39,7 @@ export default function Home() {
       const userDoc = {
         _type: "users",
         _id: address,
-        userName: 'Unnamed',
+        userName: "Unnamed",
         walletAddress: address,
       };
 
@@ -62,21 +58,18 @@ export default function Home() {
           <Hero />
         </>
       ) : (
-        <div className="walletConnectWrapper flex justify-center items-center h-screen bg-gray-200 bg-opacity-40 backdrop-filter backdrop-blur-lg fixed top-0 left-0 w-full z-50">
-          <div className="bg-white p-8 rounded-lg max-w-sm w-full relative">
-            <img
-              src={rognLogo}
-              alt="Logo"
-              className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full border-4 border-white shadow-lg bg-gray-200"
-              style={{ zIndex: 10 }}
-            />
-            <ConnectWallet
+        <div class="hero bg-[#1A1523] min-h-screen flex flex-col justify-center items-center">
+        <h1 class="text-4xl font-bold mb-4">Connect Your Wallet to Explore NFTs!</h1>
+        <p class="text-lg text-center max-w-md mb-8">Unlock the world of decentralized applications and digital assets by connecting your wallet securely.</p>
+        <ConnectWallet
               theme="dark"
               showThirdwebBranding={false}
-              modalSize="wide"
+              modalSize="compact"
+              style={{ border: "2px solid " }}
+              class="border-2 border-gray-300 p-4 rounded-lg shadow-md"
             />
-          </div>
-        </div>
+
+    </div>
       )}
     </div>
   );

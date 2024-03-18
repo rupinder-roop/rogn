@@ -19,12 +19,13 @@ const style = {
   likeIcon: `text-xl mr-2`,
 }
 
-const NFTCard = ({ nftItem, title, listings }) => {
+const NFTCard = ({ nftItem, title, listings,provider }) => {
+  // console.log(nftItem.metadata)
   const item=nftItem.metadata;
   const [isListed, setIsListed] = useState(false)
   const [price, setPrice] = useState(0)
 
-  // console.log(listings,"listings----NFT CARD-");
+  console.log(listings,"listings----NFT CARD-");
   useEffect(() => { 
     if(listings && listings.length>0){
     const listing = listings.find((data) => data.asset.id === item.id)  
