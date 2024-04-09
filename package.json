@@ -17,6 +17,7 @@
     "@thirdweb-dev/sdk": "^4.0.47",
     "ethers": "^5.7.2",
     "figlet": "^1.7.0",
+    "framer-motion": "^11.0.22",
     "next": "14.1.0",
     "react": "^18",
     "react-dom": "^18",

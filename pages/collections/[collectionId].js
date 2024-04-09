@@ -42,7 +42,6 @@ const Collection = () => {
     "0xfd1f10f31759a9d0B63DcfD55f70b286140D1B77",
     "marketplace-v3"
   );
-  console.log(contract);
   const {data : webnfts,isLoading}= useDirectListings(contract);
   // console.log(webnfts)
   const { collectionId } = router.query;
@@ -80,7 +79,7 @@ const Collection = () => {
     )
     
     const contract = await sdk.getContract("0xfd1f10f31759a9d0B63DcfD55f70b286140D1B77");
-    console.log(contract.directListings);
+    // console.log(contract.directListings);
     return await contract.directListings.getAll();
   }, [])
 
@@ -132,6 +131,8 @@ const Collection = () => {
   return (
     <div className="overflow-hidden">
       <Header />
+      {Object.keys(collection).length > 0 ? (
+        <>
       <div className={style.bannerImageContainer}>
         <img
           className={style.bannerImage}
@@ -154,29 +155,6 @@ const Collection = () => {
             }
             alt="profile image"
           />
-        </div>
-        <div className={style.endRow}>
-          <div className={style.socialIconsContainer}>
-            <div className={style.socialIconsWrapper}>
-              <div className={style.socialIconsContent}>
-                <div className={style.socialIcon}>
-                  <CgWebsite />
-                </div>
-                <div className={style.divider} />
-                <div className={style.socialIcon}>
-                  <AiOutlineInstagram />
-                </div>
-                <div className={style.divider} />
-                <div className={style.socialIcon}>
-                  <AiOutlineTwitter />
-                </div>
-                <div className={style.divider} />
-                <div className={style.socialIcon}>
-                  <HiDotsVertical />
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
         <div className={style.midRow}>
           <div className={style.title}>{collection?.title}</div>
@@ -228,7 +206,7 @@ const Collection = () => {
           <div className={style.description}>{collection?.description}</div>
         </div>
       </div>
-      <div className="flex flex-wrap ">
+      <div className="grid grid-cols-2 gap-4 mx-10 md:grid-cols-5 ">
           {webnfts && nfts.map((nftItem, id) => (
             <NFTCard
               key={id}
@@ -238,6 +216,10 @@ const Collection = () => {
             />
           ))}
       </div>
+      </>
+      ) : (
+        <div className="text-center">Loading...</div>
+      )}
     </div>
   );
 };

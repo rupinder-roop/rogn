@@ -9,7 +9,7 @@
 }
 
 :root {
-  --foreground-rgb: 0, 0, 0;
+  --foreground-rgb: 0, 0, 0;  
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 }
@@ -35,12 +35,12 @@ body {
     /* overflow-x: hidden; */
     
 }
-.dancing-script-rogn {
+/* .dancing-script-rogn {
   font-family: "Dancing Script", cursive;
   font-optical-sizing: auto;
   font-weight: 900;
   font-style: normal;
-}
+} */
 
 
 ::-webkit-scrollbar {
@@ -50,5 +50,11 @@ body {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@media (max-width: 1000px) {
+  .searchBar{
+    display: none;
   }
 }

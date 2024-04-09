@@ -1,19 +1,18 @@
-import "@/styles/globals.css";
-// import { ThirdwebWeb3Provider } from "@3rdweb/hooks";
+import "../styles/globals.css";  
 import { Sepolia } from "@thirdweb-dev/chains";
-import { ethers } from "ethers";
+// import { ChakraProvider } from "@chakra-ui/react";
+// import { ThirdwebWeb3Provider } from "@3rdweb/hooks";
 
 import {
   ThirdwebProvider,
   metamaskWallet,
   localWallet,
   coinbaseWallet,
-  useSigner
+  useSigner,
 } from "@thirdweb-dev/react";
 export default function App({ Component, pageProps }) {
   // const signer = useSigner();
   // console.log(signer);
- 
 
   return (
     <ThirdwebProvider
@@ -26,7 +25,9 @@ export default function App({ Component, pageProps }) {
         localWallet(),
       ]}
     >
-      <Component {...pageProps} />
+      {/* <ChakraProvider> */}
+        <Component {...pageProps} />
+      {/* </ChakraProvider> */}
     </ThirdwebProvider>
   );
 }

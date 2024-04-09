@@ -24,7 +24,7 @@ const Hero = () => {
         <div className={style.contentWrapper}>
           <div className={style.copyContainer}>
             <div className={style.title}>
-              Discover, collect, and sell    NFTs
+              Discover, collect, and sell  NFTs
             </div>
             <div className={style.description}>
               Rogn is the world&apos;s first NFT marketplace
