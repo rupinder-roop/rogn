@@ -13,8 +13,8 @@ function Buy() {
     <>
       <Header />
       <div className="container mx-auto p-5">
-        <div className="text-3xl font-bold mb-2">Buy NFTs</div>
-        <div className="text-gray-500">
+        <div className=" text-xl md:text-3xl font-bold mb-2">Buy NFTs</div>
+        <div className="text-gray-500 text-sm md:text-base">
           Browse and buy NFTs from this collection.
         </div>
       </div>

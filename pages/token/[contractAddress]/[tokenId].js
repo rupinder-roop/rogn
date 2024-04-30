@@ -86,8 +86,8 @@ export default function TokenPage({ nft, contractMetadata }) {
     <>
       <Header />
       <div className="container mx-auto p-5 my-5">
-        <div className="grid grid-cols-2 gap-6">
-          <div className="space-x-4 space-y-6 w-4/5 h-4/5">
+        <div className="grid md:grid-cols-2 md:gap-6">
+          <div className="space-y-6 w-full  md:w-4/5 md:h-4/5">
             <div className="rounded-2xl overflow-hidden">
               <Skeleton isLoaded={!loadingMarketplace && !loadingDirectListing}>
                 <ThirdwebNftMedia
@@ -97,38 +97,40 @@ export default function TokenPage({ nft, contractMetadata }) {
                 />
               </Skeleton>
             </div>
-            <div>
-              <p className="font-bold">Description:</p>
-              <p>{nft.metadata.description}</p>
-            </div>
-            <div>
-              {nft?.metadata?.attributes ? (
-                <>
-                  <p className="font-bold">Traits:</p>
-                  <div className="grid grid-cols-2 gap-4">
-                    {Object.entries(nft?.metadata?.attributes || {}).map(
-                      ([key, value]) => (
-                        <div
-                          key={key}
-                          className="flex flex-col items-center justify-center border p-2 rounded"
-                        >
-                          <p className="text-sm">{value.trait_type}</p>
-                          <p className="text-sm font-bold">{value.value}</p>
-                        </div>
-                      )
-                    )}
-                  </div>
-                </>
-              ) : (
-                <>
-                  <p className="font-bold">Traits:</p>
-                  No Traits Available
-                </>
-              )}
+            <div className="flex flex-row justify-between">
+              <div className="md:py-3">
+                <p className="text-xs md:text-lg font-bold">Description:</p>
+                <p>{nft.metadata.description}</p>
+              </div>
+              <div>
+                {nft?.metadata?.attributes ? (
+                  <>
+                    <p className="text-xs md:text-lg font-bold">Traits:</p>
+                    <div className="grid grid-cols-2 gap-4">
+                      {Object.entries(nft?.metadata?.attributes || {}).map(
+                        ([key, value]) => (
+                          <div
+                            key={key}
+                            className="flex flex-col items-center justify-center border p-2 rounded"
+                          >
+                            <p className="text-sm">{value.trait_type}</p>
+                            <p className="text-sm font-bold">{value.value}</p>
+                          </div>
+                        )
+                      )}
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <p className=" text-xs md:text-lg font-bold">Traits:</p>
+                    No Traits Available
+                  </>
+                )}
+              </div>
             </div>
           </div>
 
-          <div className="space-y-6">
+          <div className="w-full mt-4 sm:mt-4 sm:-ml-3 space-y-2 md:space-y-6 ">
             {contractMetadata && (
               <div className="flex items-center">
                 <div className="rounded overflow-hidden mr-4">
@@ -145,46 +147,50 @@ export default function TokenPage({ nft, contractMetadata }) {
             )}
 
             <div className="mx-2.5">
-              <p className="text-4xl mb-2 font-bold">{nft.metadata.name}</p>
-              <div className="justify-center">
+              <p className="text-sm sm:text-2xl md:text-4xl mb-2 font-bold">{nft.metadata.name}</p>
+              <div className=" sm:justify-center sm:flex-row">
                 <Link href={`/profile/${nft.owner}`}>
-                  <Button className="mr-5">Owner</Button>
+                  <Button className="mr-10 md:mr-5">Owner</Button>
                 </Link>
-                <Snippet symbol="" color="secondary">
-                  {nft.owner}
+                <Snippet className="sm:hidden " symbol="" codeString={nft.owner} color="secondary" >
+                {nft.owner.slice(0,6)}
+                {/* {nft.owner} */}
+                </Snippet><Snippet className="hidden sm:inline-flex" symbol="" xcodeString={nft.owner} color="secondary" >
+                {/* {nft.owner.slice(0,6)} */}
+                {nft.owner}
                 </Snippet>
               </div>
             </div>
             <div className="bg-black-200 p-2.5 rounded">
               <p className="text-darkgray">Price:</p>
               {loadingMarketplace || loadingDirectListing ? (
-                <p className="text-3xl font-bold">Loading...</p>
+                <p className="text-xl md:text-3xl font-bold">Loading...</p>
               ) : (
                 <>
                   {directListing && directListing[0] ? (
                     (console.log(directListing, "---direct"),
                     (
-                      <p className="text-3xl font-bold">
+                      <p className="text-lg md:text-3xl font-bold">
                         {`${directListing[0]?.currencyValuePerToken.displayValue} ${directListing[0]?.currencyValuePerToken.symbol}`}
                       </p>
                     ))
                   ) : auctionListing && auctionListing[0] ? (
-                    <p className="text-3xl font-bold">
+                    <p className="text-lg md:text-3xl font-bold">
                       {`${auctionListing[0]?.buyoutCurrencyValue.displayValue} ${auctionListing[0]?.buyoutCurrencyValue.symbol}`}
                     </p>
                   ) : (
-                    <p className="text-3xl font-bold">Not for sale</p>
+                    <p className="text-lg md:text-3xl font-bold">Not for sale</p>
                   )}
                 </>
               )}
               {loadingAuction ? (
-                <p className="text-darkgray">Loading...</p>
+                <p className="text-gray-100 text-lg md:text-3xl">Loading...</p>
               ) : (
                 <>
                   {auctionListing && auctionListing[0] && (
                     <div>
                       <p className="text-darkgray">Bids starting from</p>
-                      <p className="text-3xl font-bold">
+                      <p className="text-lg md:text-3xl font-bold">
                         {`${auctionListing[0]?.minimumBidCurrencyValue.displayValue} ${auctionListing[0]?.minimumBidCurrencyValue.symbol}`}
                       </p>
                     </div>
@@ -200,11 +206,11 @@ export default function TokenPage({ nft, contractMetadata }) {
                   (!auctionListing || !auctionListing[0]) &&
                   (!directListing || !directListing[0])
                 }
-                style={{ backgroundColor: "#1e112a", color: "#9455d3"}}
+                style={{ backgroundColor: "#1e112a", color: "#9455d3",width:"auto" }}
               >
                 Buy at asking price
               </Web3Button>
-              <p className="text-center text-xl">or</p>
+              <p className="text-center text-sm md:text-xl">or</p>
               <div className="container ">
                 <div className="flex flex-col justify-center">
                   <Input
