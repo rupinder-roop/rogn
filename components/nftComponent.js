@@ -47,7 +47,7 @@ const NFTComponent = ({ nft }) => {
   }, [directListing, auctionListing]);
 
   const style = {
-    wrapper: `bg-[black] flex-auto flex-shrink w-[18rem] h-[22rem] my-10 mx-5 rounded-2xl overflow-hidden cursor-pointer relative transition-all duration-300 ease-in-out`,
+    wrapper: `bg-[black] flex-auto w-auto h-auto overflow-hidden  my-10 mx-5 rounded-2xl overflow-hidden cursor-pointer relative transition-all duration-300 ease-in-out`,
     wrapperHover: `filter backdrop-blur-sm transition-all duration-300 ease-in-out`,
     imgContainer: `h-full w-full overflow-hidden flex justify-center items-center relative transition-all duration-300 ease-in-out`,
     nftImg: `h-full w-full object-cover transition-transform duration-300 ease-in-out transform hover:opacity-50 hover:scale-110 hover:duration-200`,

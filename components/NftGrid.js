@@ -12,7 +12,7 @@ export default function NFTGrid({
 }) {
   console.log(data," ",isLoading);
   return (
-    <div className="grid grid-cols-1 gap-0 mx-4 md:grid-cols-5">
+    <div className="grid grid-cols-1 gap-0 mx-4 md:grid-cols-3 lg:grid-cols-5 ">
       {isLoading ? (
         [...Array(10)].map(() => (
             <Skeleton/>

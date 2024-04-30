@@ -111,9 +111,9 @@ export default function SaleInfo({ nft }) {
       {nftCollectionLoading ? (
         <p>Loading...</p>
       ) : (
-        <div className="flex w-[31rem] h-[33rem] flex-col ">
-          <Tabs color="secondary" aria-label="Tabs colors" className="text-center items-centers " radius="full">
-            <Tab key="direct" title="Create Direct Listing">
+        <div className="flex w-[19.5rem] lg:w-[31rem] lg::h-[33rem] flex-col ">
+          <Tabs color="secondary" aria-label="Tabs colors" className="text-center items-centers mx-1" radius="full">
+            <Tab key="direct" title="Direct Listing" className="">
               <Card>
                 <CardBody className="text-orange-200">
                   <div className="p-4 ">
@@ -164,7 +164,7 @@ export default function SaleInfo({ nft }) {
                 </CardBody>
               </Card>
             </Tab>
-            <Tab key="auction" title="Create Auction Listing">
+            <Tab key="auction" title="Auction Listing">
               <Card>
                 <CardBody>
                   <div className="p-4 rounded">

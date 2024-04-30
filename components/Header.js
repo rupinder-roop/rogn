@@ -110,8 +110,8 @@ const Header = () => {
         <div
           className={`before:content-[''] bg-[#1a1523] before:absolute before:blur-xl w-full ${
             menuOpen
-              ? "fixed left-0 top-14 overflow-hidden  w-[55%] sm:hidden h-screen p-10  duration-1000"
-              : "fixed -left-[100%] blur-sm top-14 w-[0%] sm:hidden h-[101vh]  p-10 ease-in duration-1000"
+              ? "fixed left-0 top-14 overflow-hidden  w-1/2 sm:hidden h-screen p-10  duration-1000"
+              : "fixed -left-[100%] blur-sm top-[3.6rem] w-[0%] sm:hidden h-[103vh]  p-10 ease-in duration-1000"
           }`}
         >
           <div className="flex flex-col justify-between items-center h-full ">
