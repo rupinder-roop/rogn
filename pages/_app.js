@@ -57,11 +57,12 @@ export default function App({ Component, pageProps }) {
               localWallet(),
             ]}
           >
-            <Component {...pageProps} />
-            {loading && (
-              <div className="flex justify-center items-center z-50">
+            {loading && showLoader ? (
+              <div className="flex justify-center items-center h-screen w-screen overflow-hidden top-0 z-50 bg-black">
                 <Lottie animationData={LoadingData} />
               </div>
+            ):(
+              <Component {...pageProps} />
             )}
           </ThirdwebProvider>
         </NextThemesProvider>
