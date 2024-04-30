@@ -25,7 +25,7 @@ const NFTComponent = ({ nft }) => {
       tokenId: nft.metadata.id,
     });
 
-  const [isListed, setIsListed] = useState(false);
+  const [isListed, setIsListed] =   useState(false);
   const [showDetails, setShowDetails] = useState(false);
   const [price, setPrice] = useState(0);
 
@@ -52,10 +52,10 @@ const NFTComponent = ({ nft }) => {
     imgContainer: `h-full w-full overflow-hidden flex justify-center items-center relative transition-all duration-300 ease-in-out`,
     nftImg: `h-full w-full object-cover transition-transform duration-300 ease-in-out transform hover:opacity-50 hover:scale-110 hover:duration-200`,
     details: `absolute bottom-0 right-0 w-full p-3 text-[white] drop-shadow-xl transition-all duration-500 ease-in-out`,
-    detailsVisible: `opacity-100`,
+    detailsVisible: `md:opacity-100`,
     // detailsHidden: `opacity-0`,
     price: `flex flex-row justify-end`,
-    detailsHidden: `opacity-0 translate-y-full`,
+    detailsHidden: `md:opacity-0 md:translate-y-full`,
   };
 
   return (
