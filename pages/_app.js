@@ -13,6 +13,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import LoadingData from "@/assets/loading.json";
 import Lottie from "lottie-react";
+import { Analytics } from "@vercel/analytics/react";
 
 export default function App({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
@@ -61,7 +62,10 @@ export default function App({ Component, pageProps }) {
                 <Lottie animationData={LoadingData} />
               </div>
             ) : (
-              <Component {...pageProps} />
+              <>
+                <Component {...pageProps} />
+                <Analytics />
+              </>
             )}
           </ThirdwebProvider>
         </NextThemesProvider>
