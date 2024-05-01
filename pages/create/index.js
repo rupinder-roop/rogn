@@ -2,12 +2,16 @@ import React from "react";
 import Lottie from "lottie-react";
 import soonData from "@/assets/soon.json";
 import Header from "@/components/Header";
+import Head from "next/head";
 
 const index = () => {
   return (
     <>
+      <Head>
+        <title>Create | ROGN | Rupinder Singh</title>
+      </Head>
       <Header />
-      <div className="flex flex-col items-center justify-center min-h-screen">
+      <div className="flex flex-col items-censter justify-center min-h-screen">
         <div className="flex flex-col md:flex-row items-center justify-center max-w-6xl w-full px-4 md:px-0">
           <div className="w-full md:w-3/4 mb-8 md:mb-0">
             <Lottie animationData={soonData} className="h-full w-full" />
