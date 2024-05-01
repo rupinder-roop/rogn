@@ -119,8 +119,8 @@ const Header = () => {
                 <Link href="/">Home</Link>
               </div>
               {Links.map((menu, index) => (
-                <div className="text-xl items-center -ml-10 py-3 ">
-                  <Link href={menu.link} key={index}>
+                <div className="text-xl items-center -ml-10 py-3 " key={index}>
+                  <Link href={menu.link}>
                     {menu.name}
                   </Link>
                 </div>
