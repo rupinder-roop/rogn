@@ -61,8 +61,8 @@ const Header = () => {
           />
         </div>
         {Links.map((menu, index) => (
-          <div className={style.headerItems}>
-            <Link key={index} href={menu.link}>
+          <div className={style.headerItems} key={index}>
+            <Link href={menu.link}>
               <div className={style.headerItem}>{menu.name}</div>
             </Link>
           </div>
