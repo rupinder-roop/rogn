@@ -8,20 +8,9 @@ import {
   useValidDirectListings,
   useValidEnglishAuctions,
 } from "@thirdweb-dev/react";
-import { NFT, ThirdwebSDK } from "@thirdweb-dev/sdk";
+import { ThirdwebSDK } from "@thirdweb-dev/sdk";
 import { MARKETPLACE_ADDRESS, NFT_COLLECTION_ADDRESS } from "@/const/addresses";
-import {
-  Avatar,
-  AvatarGroup,
-  AvatarIcon,
-  Skeleton,
-  Input,
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  Button,
-  Snippet,
-} from "@nextui-org/react";
+import { Skeleton, Input, Button, Snippet } from "@nextui-org/react";
 
 import Header from "@/components/Header";
 
@@ -147,17 +136,28 @@ export default function TokenPage({ nft, contractMetadata }) {
             )}
 
             <div className="mx-2.5">
-              <p className="text-sm sm:text-2xl md:text-4xl mb-2 font-bold">{nft.metadata.name}</p>
+              <p className="text-sm sm:text-2xl md:text-4xl mb-2 font-bold">
+                {nft.metadata.name}
+              </p>
               <div className=" sm:justify-center sm:flex-row">
                 <Link href={`/profile/${nft.owner}`}>
                   <Button className="mr-10 md:mr-5">Owner</Button>
                 </Link>
-                <Snippet className="sm:hidden " symbol="" codeString={nft.owner} color="secondary" >
-                {nft.owner.slice(0,6)}
-                {/* {nft.owner} */}
-                </Snippet><Snippet className="hidden sm:inline-flex" symbol="" xcodeString={nft.owner} color="secondary" >
-                {/* {nft.owner.slice(0,6)} */}
-                {nft.owner}
+                <Snippet
+                  className="sm:hidden "
+                  symbol=""
+                  codeString={nft.owner}
+                  color="secondary"
+                >
+                  {nft.owner.slice(0, 6)}
+                </Snippet>
+                <Snippet
+                  className="hidden sm:inline-flex"
+                  symbol=""
+                  xcodeString={nft.owner}
+                  color="secondary"
+                >
+                  {nft.owner}
                 </Snippet>
               </div>
             </div>
@@ -168,18 +168,19 @@ export default function TokenPage({ nft, contractMetadata }) {
               ) : (
                 <>
                   {directListing && directListing[0] ? (
-                    (console.log(directListing, "---direct"),
                     (
                       <p className="text-lg md:text-3xl font-bold">
                         {`${directListing[0]?.currencyValuePerToken.displayValue} ${directListing[0]?.currencyValuePerToken.symbol}`}
                       </p>
-                    ))
+                    )
                   ) : auctionListing && auctionListing[0] ? (
                     <p className="text-lg md:text-3xl font-bold">
                       {`${auctionListing[0]?.buyoutCurrencyValue.displayValue} ${auctionListing[0]?.buyoutCurrencyValue.symbol}`}
                     </p>
                   ) : (
-                    <p className="text-lg md:text-3xl font-bold">Not for sale</p>
+                    <p className="text-lg md:text-3xl font-bold">
+                      Not for sale
+                    </p>
                   )}
                 </>
               )}
@@ -206,7 +207,11 @@ export default function TokenPage({ nft, contractMetadata }) {
                   (!auctionListing || !auctionListing[0]) &&
                   (!directListing || !directListing[0])
                 }
-                style={{ backgroundColor: "#1e112a", color: "#9455d3",width:"auto" }}
+                style={{
+                  backgroundColor: "#1e112a",
+                  color: "#9455d3",
+                  width: "auto",
+                }}
               >
                 Buy at asking price
               </Web3Button>
@@ -242,7 +247,6 @@ export default function TokenPage({ nft, contractMetadata }) {
 
 export async function getStaticProps(context) {
   const tokenId = context.params?.tokenId;
-  console.log(tokenId);
   const sdk = new ThirdwebSDK("Sepolia");
 
   const contract = await sdk.getContract(NFT_COLLECTION_ADDRESS);

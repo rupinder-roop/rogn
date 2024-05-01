@@ -25,29 +25,30 @@ export default function Sell() {
   return (
     <>
       <Header />
-
       {!selectedNFT ? (
         <>
           <div className=" mx-auto px-5 py-10 ">
             <h1 className="text-3xl font-bold mb-5">Sell NFTs</h1>
             <p className="mb-5">Select which NFT to sell below.</p>
-            </div>
-            <div>
-              <NFTGrid
-                data={data}
-                isLoading={isLoading}
-                overrideOnclickBehavior={(nft) => {
-                  setSelectedNFT(nft);
-                }}
-                emptyText={"You don't own any NFTs yet from this collection."}
-              />
-            </div>
+          </div>
+          <div>
+            <NFTGrid
+              data={data}
+              isLoading={isLoading}
+              overrideOnclickBehavior={(nft) => {
+                setSelectedNFT(nft);
+              }}
+              emptyText={"You don't own any NFTs yet from this collection."}
+            />
+          </div>
         </>
       ) : (
         <div className="flex justify-around w-full md:w-vw md:h-[40rem] mt-6 mx-1 rounded-xl">
           <div className="">
             <div className="grid md:grid md:grid-cols-2 md:gap-8 md:p-2 md:h-3/5 ">
-              <div className={`h-[100%] w-[100%] ml-2 md:ml-5  md:h-full md:w-full justify-self-center rounded-xl overflow-hidden `}>
+              <div
+                className={`h-[100%] w-[100%] ml-2 md:ml-5  md:h-full md:w-full justify-self-center rounded-xl overflow-hidden `}
+              >
                 <ThirdwebNftMedia
                   metadata={selectedNFT.metadata}
                   height="100%"
@@ -58,7 +59,6 @@ export default function Sell() {
               <div className="mt-2 md:mt-0 space-y-3">
                 <div className="flex justify-between md:justify-between">
                   <h2 className="text-sm ml-4 md:ml-0 md:text-xl font-bold">
-                    {/* {console.log(selectedNFT)} */}
                     TOKEN ID #{selectedNFT.metadata.id}
                   </h2>
                   <button
@@ -70,7 +70,6 @@ export default function Sell() {
                     X
                   </button>
                 </div>
-
                 <h2 className=" ml-4 md:ml-0 text-lg md:text-xl font-bold">
                   NFT {selectedNFT.metadata.name}
                 </h2>

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { BiHeart } from "react-icons/bi";
 import { ThirdwebNftMedia } from "@thirdweb-dev/react";
 import {
   useContract,
@@ -7,7 +6,6 @@ import {
   useValidEnglishAuctions,
 } from "@thirdweb-dev/react";
 import { MARKETPLACE_ADDRESS, NFT_COLLECTION_ADDRESS } from "@/const/addresses";
-import Skeleton from "@/lib/Skeleton";
 
 const NFTComponent = ({ nft }) => {
   const { contract: marketplace } = useContract(
@@ -32,10 +30,8 @@ const NFTComponent = ({ nft }) => {
   useEffect(() => {
     if (directListing && directListing[0]) {
       setIsListed(true);
-      console.log(directListing)
       setPrice(directListing[0].currencyValuePerToken.displayValue);
     } else if (auctionListing && auctionListing[0]) {
-      console.log(auctionListing)
       setIsListed(true);
       setPrice(
         `${auctionListing[0].minimumBidCurrencyValue.displayValue} ${auctionListing[0].minimumBidCurrencyValue.symbol}`
