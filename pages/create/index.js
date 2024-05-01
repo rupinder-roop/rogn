@@ -1,4 +1,3 @@
-import Create from "@/components/Create";
 import React from "react";
 import Lottie from "lottie-react";
 import soonData from "@/assets/soon.json";

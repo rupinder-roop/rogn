@@ -49,7 +49,6 @@ export default function App({ Component, pageProps }) {
         <NextThemesProvider attribute="class" defaultTheme="dark">
           <ThirdwebProvider
             activeChain={Sepolia}
-            // signer={useSigner()}
             clientId="27b2951bace39a4489643398630600f8"
             supportedWallets={[
               metamaskWallet({ recommended: true }),
@@ -61,7 +60,7 @@ export default function App({ Component, pageProps }) {
               <div className="flex justify-center items-center h-screen w-screen overflow-hidden top-0 z-50 bg-black">
                 <Lottie animationData={LoadingData} />
               </div>
-            ):(
+            ) : (
               <Component {...pageProps} />
             )}
           </ThirdwebProvider>

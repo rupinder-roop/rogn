@@ -7,7 +7,6 @@ import Header from "@/components/Header";
 function Buy() {
   const { contract } = useContract(NFT_COLLECTION_ADDRESS);
   const { data, isLoading } = useNFTs(contract);
-  console.log(data, "....data buy");
 
   return (
     <>

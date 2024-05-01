@@ -1,9 +1,8 @@
 import React from "react";
 import { useContract, useOwnedNFTs } from "@thirdweb-dev/react";
 import {
-  MARKETPLACE_ADDRESS,
   NFT_COLLECTION_ADDRESS,
-} from "../../const/addresses";
+} from "@/const/addresses";
 import { useRouter } from "next/router";
 import NFTGrid from "@/components/NftGrid";
 import Header from "@/components/Header";
@@ -12,10 +11,6 @@ import Header from "@/components/Header";
 export default function ProfilePage() {
   const router = useRouter();
   const { contract: nftCollection } = useContract(NFT_COLLECTION_ADDRESS);
-  const { contract: marketplace } = useContract(
-    MARKETPLACE_ADDRESS,
-    "marketplace-v3"
-  );
 
   const { data: ownedNfts, isLoading: loadingOwnedNfts } = useOwnedNFTs(
     nftCollection,
@@ -34,7 +29,6 @@ export default function ProfilePage() {
       <NFTGrid
         data={ownedNfts}
         isLoading={loadingOwnedNfts}
-        // emptyText={"You don't own any NFTs yet from this collection."}
       />
     </div>
     </>

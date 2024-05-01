@@ -1,6 +1,5 @@
 import Header from "../components/Header";
 import Hero from "../components/Hero";
-import rognLogo from "../assets/rognLogo.png";
 import { useEffect } from "react";
 import {
   ConnectWallet,
@@ -26,8 +25,14 @@ export default function Home() {
       `Welcome Back ${userName !== "Unnamed" ? userName : ""}!`,
       {
         style: {
-          background: "#04111d",
-          color: "#fff",
+          border: "1px solid #1a1523",
+          padding: "8px",
+          color: "whitesmoke",
+          background: "#1a1523",
+        },
+        iconTheme: {
+          primary: "#3d3252",
+          secondary: "white",
         },
       }
     );
@@ -59,8 +64,13 @@ export default function Home() {
         </>
       ) : (
         <div className="hero bg-[#1A1523] min-h-screen flex flex-col justify-center items-center">
-          <h1 className="text-4xl font-bold mb-4">Connect Your Wallet to Explore NFTs!</h1>
-          <p className="text-lg text-center max-w-md mb-8">Unlock the world of decentralized applications and digital assets by connecting your wallet securely.</p>
+          <h1 className="text-4xl font-bold mb-4">
+            Connect Your Wallet to Explore NFTs!
+          </h1>
+          <p className="text-lg text-center max-w-md mb-8">
+            Unlock the world of decentralized applications and digital assets by
+            connecting your wallet securely.
+          </p>
           <ConnectWallet
             theme="dark"
             showThirdwebBranding={false}

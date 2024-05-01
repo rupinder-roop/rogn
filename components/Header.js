@@ -10,7 +10,6 @@ import { ConnectWallet, useAddress } from "@thirdweb-dev/react";
 import { Avatar, AvatarIcon } from "@nextui-org/react";
 
 const style = {
-  // wrapper: `bg-[#1A1523] w-screen px-[1.2rem] py-[0.8rem] flex sticky top-0 justify-center z-20`,
   desktopWrapper: ` flex md:items-center bg-[#1A1523] w-screen px-[1.2rem] py-2 md:py-[0.8rem] sticky top-0 justify-between items-center z-20`,
   mobileWrapper: `md:hidden bg-[#1A1523] w-screen px-[1.2rem] py-[0.8rem] flex sticky top-0 justify-between items-center z-20`,
   logoContainer: `flex flex-1 mr-9 items-center cursor-pointer `,
@@ -108,7 +107,7 @@ const Header = () => {
           )}
         </div>
         <div
-          className={`before:content-[''] bg-[#1a1523] before:absolute before:blur-xl w-full ${
+          className={`before:content-[''] bg-[#1a1523] before:absolute before:blur-xl ${
             menuOpen
               ? "fixed left-0 top-14 overflow-hidden  w-1/2 sm:hidden h-screen p-10  duration-1000"
               : "fixed -left-[100%] blur-sm top-[3.6rem] w-[0%] sm:hidden h-[103vh]  p-10 ease-in duration-1000"
