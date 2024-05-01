@@ -8,7 +8,7 @@ export default function NFTGrid({ isLoading, data, overrideOnclickBehavior }) {
   return (
     <div className="grid grid-cols-1 gap-0 mx-4 md:grid-cols-3 lg:grid-cols-5 ">
       {isLoading ? (
-        [...Array(10)].map(() => <Skeleton />)
+        [...Array(10)].map((e) => <Skeleton key={e} />)
       ) : data && data.length > 0 ? (
         data.map((nft) =>
           !overrideOnclickBehavior ? (
