@@ -19,6 +19,7 @@
     "@thirdweb-dev/react": "^4.4.20",
     "@thirdweb-dev/sdk": "^4.0.47",
     "@thirdweb-dev/storage": "^2.0.14",
+    "@vercel/analytics": "^1.2.2",
     "ethers": "^5.7.2",
     "figlet": "^1.7.0",
     "framer-motion": "^11.0.22",
