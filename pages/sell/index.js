@@ -9,6 +9,7 @@ import SaleInfo from "@/components/SalesInfo";
 import NFTGrid from "@/components/NftGrid";
 import { NFT_COLLECTION_ADDRESS } from "@/const/addresses";
 import Header from "@/components/Header";
+import Head from "next/head";
 
 export default function Sell() {
   const { contract } = useContract(NFT_COLLECTION_ADDRESS);
@@ -24,6 +25,9 @@ export default function Sell() {
   };
   return (
     <>
+      <Head>
+        <title>Sell | ROGN | Rupinder Singh</title>
+      </Head>
       <Header />
       {!selectedNFT ? (
         <>

@@ -8,6 +8,7 @@ import {
 } from "@thirdweb-dev/react";
 import { client } from "../lib/sanityClient";
 import toast, { Toaster } from "react-hot-toast";
+import Head from "next/head";
 
 const style = {
   wrapper: ``,
@@ -55,6 +56,10 @@ export default function Home() {
   }, [address]);
 
   return (
+    <>
+    <Head>
+        <title>Home | ROGN | Rupinder Singh</title>
+      </Head>
     <div className={style.wrapper}>
       <Toaster position="top-center" reverseOrder={false} />
       {connectionStatus === "connected" ? (
@@ -81,5 +86,6 @@ export default function Home() {
         </div>
       )}
     </div>
+    </>
   );
 }

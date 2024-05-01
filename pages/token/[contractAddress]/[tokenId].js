@@ -13,6 +13,8 @@ import { MARKETPLACE_ADDRESS, NFT_COLLECTION_ADDRESS } from "@/const/addresses";
 import { Skeleton, Input, Button, Snippet } from "@nextui-org/react";
 
 import Header from "@/components/Header";
+import Image from "next/image";
+import Head from "next/head";
 
 export default function TokenPage({ nft, contractMetadata }) {
   const { contract: marketplace, isLoading: loadingMarketplace } = useContract(
@@ -73,6 +75,9 @@ export default function TokenPage({ nft, contractMetadata }) {
 
   return (
     <>
+      <Head>
+        <title>NFT | ROGN | Rupinder Singh</title>
+      </Head>
       <Header />
       <div className="container mx-auto p-5 my-5">
         <div className="grid md:grid-cols-2 md:gap-6">
@@ -168,11 +173,9 @@ export default function TokenPage({ nft, contractMetadata }) {
               ) : (
                 <>
                   {directListing && directListing[0] ? (
-                    (
-                      <p className="text-lg md:text-3xl font-bold">
-                        {`${directListing[0]?.currencyValuePerToken.displayValue} ${directListing[0]?.currencyValuePerToken.symbol}`}
-                      </p>
-                    )
+                    <p className="text-lg md:text-3xl font-bold">
+                      {`${directListing[0]?.currencyValuePerToken.displayValue} ${directListing[0]?.currencyValuePerToken.symbol}`}
+                    </p>
                   ) : auctionListing && auctionListing[0] ? (
                     <p className="text-lg md:text-3xl font-bold">
                       {`${auctionListing[0]?.buyoutCurrencyValue.displayValue} ${auctionListing[0]?.buyoutCurrencyValue.symbol}`}

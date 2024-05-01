@@ -3,6 +3,7 @@ import { useContract, useNFTs } from "@thirdweb-dev/react";
 import { NFT_COLLECTION_ADDRESS } from "@/const/addresses";
 import NFTGrid from "@/components/NftGrid";
 import Header from "@/components/Header";
+import Head from "next/head";
 
 function Buy() {
   const { contract } = useContract(NFT_COLLECTION_ADDRESS);
@@ -10,6 +11,9 @@ function Buy() {
 
   return (
     <>
+      <Head>
+        <title>Buy | ROGN | Rupinder Singh</title>
+      </Head>
       <Header />
       <div className="container mx-auto p-5">
         <div className=" text-xl md:text-3xl font-bold mb-2">Buy NFTs</div>
