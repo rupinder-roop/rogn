@@ -11,9 +11,7 @@ import {
 import { ThirdwebSDK } from "@thirdweb-dev/sdk";
 import { MARKETPLACE_ADDRESS, NFT_COLLECTION_ADDRESS } from "@/const/addresses";
 import { Skeleton, Input, Button, Snippet } from "@nextui-org/react";
-
 import Header from "@/components/Header";
-import Image from "next/image";
 import Head from "next/head";
 
 export default function TokenPage({ nft, contractMetadata }) {

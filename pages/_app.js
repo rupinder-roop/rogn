@@ -51,6 +51,7 @@ export default function App({ Component, pageProps }) {
           <ThirdwebProvider
             activeChain={Sepolia}
             clientId="27b2951bace39a4489643398630600f8"
+            secretKey="uv2R0GdqwO9VYAqevhoiztsNp_3qiCNzrilGfu5h8SG3tSxIsVz2VauP9HP7YgKW-r3QIU9PCknPtUwIJa_Thw"
             supportedWallets={[
               metamaskWallet({ recommended: true }),
               coinbaseWallet(),
@@ -65,6 +66,7 @@ export default function App({ Component, pageProps }) {
               <>
                 <Component {...pageProps} />
                 <Analytics />
+                
               </>
             )}
           </ThirdwebProvider>
