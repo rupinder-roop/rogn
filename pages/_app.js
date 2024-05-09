@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 import LoadingData from "@/assets/loading.json";
 import Lottie from "lottie-react";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export default function App({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
@@ -66,7 +67,7 @@ export default function App({ Component, pageProps }) {
               <>
                 <Component {...pageProps} />
                 <Analytics />
-                
+                <SpeedInsights />
               </>
             )}
           </ThirdwebProvider>
